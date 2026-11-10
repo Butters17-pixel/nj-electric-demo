@@ -1,0 +1,59 @@
+{
+  "name": "Brightwire Electric",
+  "demo_tag": "Demo",
+  "tagline": "ELECTRIC · DEMO",
+  "phone": "(732) 555-0142",
+  "tel": "+17325550142",
+  "home_town": "Point Pleasant",
+  "county_line": "Serving Monmouth & Ocean County homes",
+  "towns": ["Point Pleasant", "Brick", "Wall", "Manasquan", "Toms River", "Belmar", "Spring Lake", "Brielle", "Sea Girt", "Lakewood"],
+  "hero": {
+    "eyebrow": "Home electrician · Jersey Shore",
+    "h1": ["Safe power", "for every", "Shore home"],
+    "h1_highlight": "Shore",
+    "lede": "Panels, EV chargers, lighting and repairs.",
+    "cta": "Get a free quote",
+    "call_link": "Call us",
+    "image": "hero-room",
+    "bg_word": "SHORE"
+  },
+  "trust": [
+    {"icon": "map-pin", "label": "10 Shore towns"},
+    {"icon": "file-text", "label": "Free quote"},
+    {"icon": "message-circle", "label": "Call or text"},
+    {"icon": "camera", "label": "Send a photo"}
+  ],
+  "services": [
+    {"name": "Panel upgrades", "icon": "server"},
+    {"name": "EV chargers", "icon": "plug-zap"},
+    {"name": "Lighting", "icon": "lightbulb"},
+    {"name": "Troubleshooting", "icon": "zap"},
+    {"name": "Generators", "icon": "battery-charging"},
+    {"name": "Outlets & wiring", "icon": "plug"}
+  ],
+  "emergency": {
+    "eyebrow": "Electrical emergency",
+    "h2": "Sparks or a burning smell?",
+    "note": "Call us first. If you see smoke or fire, get out and call 911.",
+    "chips": ["Call first", "Safety first", "Shore towns"]
+  },
+  "projects": [
+    {"img": "warm-panel", "caption": "Panel swap", "pos": "55% 50%"},
+    {"img": "warm-ev", "caption": "Garage EV charger", "pos": "62% 50%"},
+    {"img": "warm-house", "caption": "Exterior lighting", "pos": "50% 50%"},
+    {"img": "svc-lighting", "caption": "Kitchen pendants", "pos": "50% 30%"}
+  ],
+  "steps": [
+    {"icon": "message-circle", "title": "Call or text", "text": "Tell us what's going on."},
+    {"icon": "camera", "title": "Send a photo", "text": "Panel, outlet or fixture."},
+    {"icon": "calendar", "title": "Pick a time", "text": "We confirm a visit window."},
+    {"icon": "shield-check", "title": "Done right", "text": "Tested and cleaned up."}
+  ],
+  "reviews": [
+    {"quote": "Panel swap was quick and the basement was left spotless.", "name": "Dana R.", "town": "Brick"},
+    {"quote": "Charger went in the same week. Garage looks great.", "name": "Mike T.", "town": "Wall"},
+    {"quote": "Found the bad breaker fast and explained everything.", "name": "Lena P.", "town": "Belmar"}
+  ],
+  "sample_label": "Sample content",
+  "footer_note": "Sample design concept. Fictional company, sample reviews and generated images. Phone number is fictional."
+}
