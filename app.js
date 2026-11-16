@@ -21,3 +21,27 @@
     status.focus();
   });
 })();
+
+// Scroll reveal: fade/rise sections in once. After the reveal the class is
+// removed so each element's own hover transitions work normally again.
+(function () {
+  const els = document.querySelectorAll('.rv');
+  const show = (el) => {
+    el.classList.add('in');
+    setTimeout(() => { el.classList.remove("rv", "in"); el.style.transitionDelay = ""; }, 1600);
+  };
+  if (!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    els.forEach((el) => el.classList.remove('rv'));
+    return;
+  }
+  const io = new IntersectionObserver((entries) => entries.forEach((en) => {
+    if (!en.isIntersecting) return;
+    const el = en.target;
+    // stagger siblings in the same row
+    const sibs = [...el.parentElement.children].filter((c) => c.classList.contains('rv'));
+    el.style.transitionDelay = Math.min(sibs.indexOf(el), 5) * 90 + 'ms';
+    show(el);
+    io.unobserve(el);
+  }), { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+  els.forEach((el) => io.observe(el));
+})();

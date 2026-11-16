@@ -55,11 +55,11 @@ def call(cls, label=None):
 
 h1 = "<br>".join(e(l).replace(e(H["h1_highlight"]), f'<em class="hl">{e(H["h1_highlight"])}</em>') for l in H["h1"])
 trust = "".join(f'<li>{line_icon(t["icon"])}<span>{e(t["label"])}</span></li>' for t in C["trust"])
-svc = "".join(f'<li class="svc"><span class="svc-ico">{line_icon(s["icon"])}</span><span class="svc-name">{e(s["name"])}</span></li>' for s in C["services"])
+svc = "".join(f'<li class="svc rv"><span class="svc-ico">{line_icon(s["icon"])}</span><span class="svc-name">{e(s["name"])}</span></li>' for s in C["services"])
 chips = "".join(f'<li>{line_icon("check")}{e(c)}</li>' for c in EM["chips"])
-projects = "".join(f'<figure class="proj">{pic(p["img"], p["caption"] + " (sample image)", pos=p["pos"], sizes="(max-width:640px) 50vw, 460px")}<figcaption><span>{e(p["caption"])}</span><b>Sample</b></figcaption></figure>' for p in C["projects"])
-steps = "".join(f'<li class="step"><div class="step-top"><span class="num">0{i+1}</span>{line_icon(s["icon"])}</div><h3>{e(s["title"])}</h3><p>{e(s["text"])}</p></li>' for i, s in enumerate(C["steps"]))
-reviews = "".join(f'<figure class="review"><span class="tag">Sample</span><span class="qmark" aria-hidden="true">“</span><blockquote>{e(r["quote"])}</blockquote><figcaption>{e(r["name"])} · {e(r["town"])}</figcaption></figure>' for r in C["reviews"])
+projects = "".join(f'<figure class="proj rv">{pic(p["img"], p["caption"] + " (sample image)", pos=p["pos"], sizes="(max-width:640px) 50vw, 460px")}<figcaption><span>{e(p["caption"])}</span></figcaption></figure>' for p in C["projects"])
+steps = "".join(f'<li class="step rv"><div class="step-top"><span class="num">0{i+1}</span>{line_icon(s["icon"])}</div><h3>{e(s["title"])}</h3><p>{e(s["text"])}</p></li>' for i, s in enumerate(C["steps"]))
+reviews = "".join(f'<figure class="review rv"><span class="qmark" aria-hidden="true">“</span><blockquote>{e(r["quote"])}</blockquote><figcaption>{e(r["name"])} · {e(r["town"])}</figcaption></figure>' for r in C["reviews"])
 towns = "".join(f'<li{" class=\"home\"" if t == C["home_town"] else ""}>{line_icon("check")}{e(t)}</li>' for t in C["towns"])
 opts_town = '<option value="" disabled selected>Choose a town</option>' + "".join(f"<option>{e(t)}</option>" for t in C["towns"]) + "<option>Other town</option>"
 opts_svc = '<option value="" disabled selected>Choose a service</option>' + "".join(f"<option>{e(s['name'])}</option>" for s in C["services"]) + "<option>Something else</option>"
@@ -69,6 +69,7 @@ page = f'''<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<script>document.documentElement.classList.add('js')</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{e(name)} (Demo) · Jersey Shore electrician design sample</title>
 <meta name="description" content="Design sample for a fictional NJ electrical contractor. Not a real business.">
@@ -77,8 +78,7 @@ page = f'''<!doctype html>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<aside class="pre-header" aria-label="Demo notice and phone"><div class="demo-ribbon">Design sample · fictional company · nothing on this page is real</div>
-<div class="topbar"><div class="wrap"><span class="tb-left">{line_icon("map-pin")}{e(C["county_line"])}</span><a href="tel:{tel}">{line_icon("phone")}Call {e(phone)}</a></div></div></aside>
+<aside class="pre-header" aria-label="Phone"><div class="topbar"><div class="wrap"><span class="tb-left">{line_icon("map-pin")}{e(C["county_line"])}</span><a href="tel:{tel}">{line_icon("phone")}Call {e(phone)}</a></div></div></aside>
 <header class="site-header"><div class="wrap">
   {logo}
   <nav class="nav" aria-label="Main"><a href="#services">Services</a><a href="#work">Work</a><a href="#towns">Towns</a><a href="#quote">Quote</a></nav>
@@ -88,7 +88,7 @@ page = f'''<!doctype html>
 <main id="top">
 <section class="hero">
   <div class="hero-bg">{pic(H["image"], "Dark room lit by a warm lamp (generated sample image)", "hero-img", eager=True)}</div>
-  <div class="hero-shade"></div>
+  <div class="hero-shade"></div><div class="hero-vignette" aria-hidden="true"></div>
   <div class="bg-word" aria-hidden="true">{e(H["bg_word"])}</div>
   <div class="wrap hero-grid">
     <div class="hero-copy">
@@ -101,6 +101,7 @@ page = f'''<!doctype html>
     {bulb()}
   </div>
   <p class="side-word" aria-hidden="true">Brightwire · Demo</p>
+  <p class="demo-tag">Design sample · fictional company</p>
 </section>
 
 <section class="quote-sec" id="quote"><div class="wrap">
@@ -119,34 +120,34 @@ page = f'''<!doctype html>
 </div></section>
 
 <section class="services" id="services"><div class="wrap">
-  <div class="sec-head"><div><p class="eyebrow">What we do</p><h2>Every outlet to the panel</h2></div></div>
+  <div class="sec-head rv"><div><p class="eyebrow">What we do</p><h2>Every outlet to the panel</h2></div></div>
   <ul class="svc-row">{svc}</ul>
 </div></section>
 
-<section class="em-sec"><div class="wrap"><div class="emergency">
+<section class="em-sec"><div class="wrap"><div class="emergency rv">
   <span class="siren">{line_icon("siren")}</span>
   <div class="em-copy"><p class="eyebrow hot">{e(EM["eyebrow"])}</p><h2>{e(EM["h2"])}</h2><p>{e(EM["note"])}</p></div>
   <div class="em-act">{call("btn-primary btn-lg")}<ul class="chips">{chips}</ul></div>
 </div></div></section>
 
 <section class="work" id="work"><div class="wrap">
-  <div class="sec-head"><div><p class="eyebrow">Recent work</p><h2>Lit, wired, finished</h2></div><div class="sec-note">{SAMPLE}<span>Sample images. Real job photos go here.</span></div></div>
+  <div class="sec-head rv"><div><p class="eyebrow">Recent work</p><h2>Lit, wired, finished</h2></div><div class="sec-note">{SAMPLE}<span>Sample images. Real job photos go here.</span></div></div>
   <div class="proj-row">{projects}</div>
 </div></section>
 
 <section class="how"><div class="how-bg">{pic("warm-outlet", "Electrician wiring an outlet (generated sample image)")}</div><div class="wrap">
-  <div class="sec-head"><div><p class="eyebrow">How it works</p><h2>Four easy steps</h2></div></div>
+  <div class="sec-head rv"><div><p class="eyebrow">How it works</p><h2>Four easy steps</h2></div></div>
   <ol class="steps">{steps}</ol>
 </div></section>
 
 <section class="reviews"><div class="wrap">
-  <div class="sec-head"><div><p class="eyebrow">Reviews</p><h2>Neighbors, lit up</h2></div><div class="sec-note">{SAMPLE}<span>Sample reviews. Real reviews go here.</span></div></div>
+  <div class="sec-head rv"><div><p class="eyebrow">Reviews</p><h2>Neighbors, lit up</h2></div><div class="sec-note">{SAMPLE}<span>Sample reviews. Real reviews go here.</span></div></div>
   <div class="review-row">{reviews}</div>
 </div></section>
 
 <section class="towns" id="towns"><div class="wrap towns-grid">
   <div><p class="eyebrow">Towns served</p><h2>Down the Shore</h2><p class="muted">Not on the list? Call and ask.</p>{call("btn-outline", "Call to check your town")}</div>
-  <ul class="town-list">{towns}</ul>
+  <ul class="town-list rv">{towns}</ul>
 </div></section>
 </main>
 
