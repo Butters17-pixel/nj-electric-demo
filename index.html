@@ -21,7 +21,7 @@
 
 <main id="top">
 <section class="hero">
-  <div class="hero-bg"><picture><source srcset="assets/img/hero-room.webp" type="image/webp"><img class="hero-img" src="assets/img/hero-room.jpg" alt="Dark room lit by a warm lamp (generated sample image)" fetchpriority="high" decoding="async"></picture></div>
+  <div class="hero-bg"><img class="hero-img" src="assets/img/hero-room.webp" srcset="assets/img/hero-room-sm.webp 1200w, assets/img/hero-room.webp 2560w" sizes="100vw" alt="Dark room lit by a warm lamp (generated sample image)" fetchpriority="high" decoding="async"></div>
   <div class="hero-shade"></div>
   <div class="bg-word" aria-hidden="true">SHORE</div>
   <div class="wrap hero-grid">
@@ -54,14 +54,14 @@
   <p class="side-word" aria-hidden="true">Brightwire · Demo</p>
 </section>
 
-<section class="quote-sec"><div class="wrap">
+<section class="quote-sec" id="quote"><div class="wrap">
   <form class="quote" id="quote-form">
-    <div class="quote-head" id="quote"><h2>Quick quote</h2><span class="sample">Demo form</span></div>
+    <div class="quote-head"><h2>Quick quote</h2><span class="sample">Demo form</span></div>
     <div class="fields">
-      <label>Name<input name="name" autocomplete="off" placeholder="Your name" required></label>
-      <label>Phone<input name="phone" type="tel" autocomplete="off" placeholder="(732) 555-0100" required></label>
-      <label>Town<select name="town"><option>Point Pleasant</option><option>Brick</option><option>Wall</option><option>Manasquan</option><option>Toms River</option><option>Belmar</option><option>Spring Lake</option><option>Brielle</option><option>Sea Girt</option><option>Lakewood</option><option>Other town</option></select></label>
-      <label>Need<select name="need"><option>Panel upgrades</option><option>EV chargers</option><option>Lighting</option><option>Troubleshooting</option><option>Generators</option><option>Outlets &amp; wiring</option><option>Something else</option></select></label>
+      <label>Name<input name="name" autocomplete="name" placeholder="Your name" required></label>
+      <label>Phone<input name="phone" type="tel" autocomplete="tel" placeholder="(732) 555-0100" required></label>
+      <label>Town<select name="town" required><option value="" disabled selected>Choose a town</option><option>Point Pleasant</option><option>Brick</option><option>Wall</option><option>Manasquan</option><option>Toms River</option><option>Belmar</option><option>Spring Lake</option><option>Brielle</option><option>Sea Girt</option><option>Lakewood</option><option>Other town</option></select></label>
+      <label>Need<select name="need" required><option value="" disabled selected>Choose a service</option><option>Panel upgrades</option><option>EV chargers</option><option>Lighting</option><option>Troubleshooting</option><option>Generators</option><option>Outlets &amp; wiring</option><option>Something else</option></select></label>
       <button class="btn btn-primary" type="submit"><span>Request a quote</span><svg class="lico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" />
   <path d="m12 5 7 7-7 7" /></svg></button>
     </div>
@@ -105,10 +105,10 @@
 
 <section class="work" id="work"><div class="wrap">
   <div class="sec-head"><div><p class="eyebrow">Recent work</p><h2>Lit, wired, finished</h2></div><div class="sec-note"><span class="sample">Sample content</span><span>Sample images. Real job photos go here.</span></div></div>
-  <div class="proj-row"><figure class="proj"><picture><source srcset="assets/img/warm-panel.webp" type="image/webp"><img class="" src="assets/img/warm-panel.jpg" alt="Panel swap (sample image)" loading="eager" decoding="async" style="object-position:55% 50%"></picture><figcaption><span>Panel swap</span><b>Sample</b></figcaption></figure><figure class="proj"><picture><source srcset="assets/img/warm-ev.webp" type="image/webp"><img class="" src="assets/img/warm-ev.jpg" alt="Garage EV charger (sample image)" loading="eager" decoding="async" style="object-position:62% 50%"></picture><figcaption><span>Garage EV charger</span><b>Sample</b></figcaption></figure><figure class="proj"><picture><source srcset="assets/img/warm-house.webp" type="image/webp"><img class="" src="assets/img/warm-house.jpg" alt="Exterior lighting (sample image)" loading="eager" decoding="async" style="object-position:50% 50%"></picture><figcaption><span>Exterior lighting</span><b>Sample</b></figcaption></figure><figure class="proj"><picture><source srcset="assets/img/svc-lighting.webp" type="image/webp"><img class="" src="assets/img/svc-lighting.jpg" alt="Kitchen pendants (sample image)" loading="eager" decoding="async" style="object-position:50% 30%"></picture><figcaption><span>Kitchen pendants</span><b>Sample</b></figcaption></figure></div>
+  <div class="proj-row"><figure class="proj"><img class="" src="assets/img/warm-panel.webp" srcset="assets/img/warm-panel-sm.webp 1200w, assets/img/warm-panel.webp 1600w" sizes="(max-width:640px) 50vw, 460px" alt="Panel swap (sample image)" loading="lazy" decoding="async" style="object-position:55% 50%"><figcaption><span>Panel swap</span><b>Sample</b></figcaption></figure><figure class="proj"><img class="" src="assets/img/warm-ev.webp" srcset="assets/img/warm-ev-sm.webp 1200w, assets/img/warm-ev.webp 1600w" sizes="(max-width:640px) 50vw, 460px" alt="Garage EV charger (sample image)" loading="lazy" decoding="async" style="object-position:62% 50%"><figcaption><span>Garage EV charger</span><b>Sample</b></figcaption></figure><figure class="proj"><img class="" src="assets/img/warm-house.webp" srcset="assets/img/warm-house-sm.webp 1200w, assets/img/warm-house.webp 1600w" sizes="(max-width:640px) 50vw, 460px" alt="Exterior lighting (sample image)" loading="lazy" decoding="async" style="object-position:50% 50%"><figcaption><span>Exterior lighting</span><b>Sample</b></figcaption></figure><figure class="proj"><img class="" src="assets/img/svc-lighting.webp" srcset="assets/img/svc-lighting-sm.webp 1200w, assets/img/svc-lighting.webp 1600w" sizes="(max-width:640px) 50vw, 460px" alt="Kitchen pendants (sample image)" loading="lazy" decoding="async" style="object-position:50% 30%"><figcaption><span>Kitchen pendants</span><b>Sample</b></figcaption></figure></div>
 </div></section>
 
-<section class="how"><div class="how-bg"><picture><source srcset="assets/img/warm-outlet.webp" type="image/webp"><img class="" src="assets/img/warm-outlet.jpg" alt="Electrician wiring an outlet (generated sample image)" loading="eager" decoding="async"></picture></div><div class="wrap">
+<section class="how"><div class="how-bg"><img class="" src="assets/img/warm-outlet.webp" srcset="assets/img/warm-outlet-sm.webp 1200w, assets/img/warm-outlet.webp 2400w" sizes="100vw" alt="Electrician wiring an outlet (generated sample image)" loading="lazy" decoding="async"></div><div class="wrap">
   <div class="sec-head"><div><p class="eyebrow">How it works</p><h2>Four easy steps</h2></div></div>
   <ol class="steps"><li class="step"><div class="step-top"><span class="num">01</span><svg class="lico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719" /></svg></div><h3>Call or text</h3><p>Tell us what&#x27;s going on.</p></li><li class="step"><div class="step-top"><span class="num">02</span><svg class="lico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13.997 4a2 2 0 0 1 1.76 1.05l.486.9A2 2 0 0 0 18.003 7H20a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h1.997a2 2 0 0 0 1.759-1.048l.489-.904A2 2 0 0 1 10.004 4z" />
   <circle cx="12" cy="13" r="3" /></svg></div><h3>Send a photo</h3><p>Panel, outlet or fixture.</p></li><li class="step"><div class="step-top"><span class="num">03</span><svg class="lico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v3" />

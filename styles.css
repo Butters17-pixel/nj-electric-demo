@@ -56,7 +56,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,[t
 /* hero */
 .hero{position:relative;overflow:hidden;min-height:720px;display:flex;align-items:center;isolation:isolate}
 .hero-bg{position:absolute;inset:0;z-index:-3}
-.hero-bg picture,.hero-img{width:100%;height:100%}
+.hero-img{width:100%;height:100%}
 .hero-img{object-fit:cover;object-position:80% 50%;filter:brightness(.85) contrast(1.08) saturate(1.05)}
 .hero-shade{position:absolute;inset:0;z-index:-2;background:
   linear-gradient(90deg,rgba(5,9,11,.97) 0%,rgba(5,9,11,.86) 34%,rgba(5,9,11,.25) 62%,rgba(5,9,11,.35) 100%),
@@ -90,13 +90,15 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,[t
 /* quote (overlaps hero) */
 .quote-sec{position:relative;z-index:5;margin-top:-56px}
 .quote{background:linear-gradient(180deg,rgba(20,27,30,.92),rgba(12,17,19,.96));border:1px solid var(--line);border-radius:20px;padding:24px 26px;box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 0 1px rgba(242,106,27,.08),inset 0 1px 0 rgba(255,255,255,.05);backdrop-filter:blur(12px)}
-.quote-head{display:flex;align-items:center;gap:14px;margin-bottom:16px;scroll-margin-top:130px}
+.quote-head{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+.quote-sec{scroll-margin-top:96px}
 .quote h2{font-size:28px}
 .fields{display:grid;grid-template-columns:1fr 1fr 1fr 1fr auto;gap:14px;align-items:end}
 .quote label{display:grid;gap:6px;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
 .quote input,.quote select{font:inherit;font-size:15px;letter-spacing:0;text-transform:none;height:50px;border-radius:12px;padding:0 14px;color:var(--text);background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.14);width:100%;min-width:0}
 .quote select option{color:#111}
 .quote input::placeholder{color:#7d8585}
+.quote select:invalid{color:#7d8585}
 .quote input:focus,.quote select:focus{border-color:var(--orange)}
 .fields .btn{height:50px;padding:0 24px}
 .micro{margin-top:12px;font-size:12.5px;color:var(--muted-2)}
@@ -130,7 +132,7 @@ section{position:relative}
 .work{padding:var(--sec-y) 0;border-top:1px solid var(--line)}
 .proj-row{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:14px}
 .proj{margin:0;position:relative;height:300px;border-radius:14px;overflow:hidden;background:var(--card);box-shadow:0 24px 50px rgba(0,0,0,.5)}
-.proj picture,.proj img{width:100%;height:100%;object-fit:cover;transition:transform 1s}
+.proj img{width:100%;height:100%;object-fit:cover;transition:transform 1s}
 .proj img{filter:brightness(.88) saturate(1.05)}
 .proj::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(5,9,11,.9));pointer-events:none}
 .proj:hover img{transform:scale(1.05)}
@@ -138,7 +140,7 @@ section{position:relative}
 .proj figcaption b{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--orange-hot);border:1px solid rgba(242,106,27,.5);padding:2px 8px;border-radius:999px;background:rgba(5,9,11,.6)}
 .how{padding:var(--sec-y) 0;overflow:hidden;isolation:isolate}
 .how-bg{position:absolute;inset:0;z-index:-1}
-.how-bg picture,.how-bg img{width:100%;height:100%;object-fit:cover;object-position:60% 45%}
+.how-bg img{width:100%;height:100%;object-fit:cover;object-position:60% 45%}
 .how-bg img{filter:brightness(1.05) contrast(1.05);-webkit-mask-image:linear-gradient(180deg,transparent,#000 16%,#000 84%,transparent);mask-image:linear-gradient(180deg,transparent,#000 16%,#000 84%,transparent)}
 .how-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--bg) 0%,rgba(5,9,11,.93) 30%,rgba(5,9,11,.35) 52%,rgba(5,9,11,.35) 100%)}
 .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
@@ -233,4 +235,4 @@ section{position:relative}
   .cb-call{background:var(--orange);color:#140800}
   .cb-quote{border:1px solid rgba(255,255,255,.25);color:var(--text)}
 }
-@media (prefers-reduced-motion:reduce){*,*::before{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}}

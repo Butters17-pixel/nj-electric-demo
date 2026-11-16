@@ -25,11 +25,14 @@ def line_icon(n, cls="lico"):
     return (f'<svg class="{cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" '
             f'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{ICONS[n]}</svg>')
 
-def pic(name, alt, cls="", pos=None, eager=False):
+# Each photo ships as {name}.webp (large) and {name}-sm.webp (1200px wide); see IMG_W.
+IMG_W = {"hero-room": 2560, "warm-outlet": 2400, "warm-panel": 1600, "warm-ev": 1600, "warm-house": 1600, "svc-lighting": 1600}
+
+def pic(name, alt, cls="", pos=None, eager=False, sizes="100vw"):
     style = f' style="object-position:{pos}"' if pos else ""
-    load = 'fetchpriority="high"' if eager else 'loading="eager"'
-    return (f'<picture><source srcset="assets/img/{name}.webp" type="image/webp">'
-            f'<img class="{cls}" src="assets/img/{name}.jpg" alt="{e(alt)}" {load} decoding="async"{style}></picture>')
+    load = 'fetchpriority="high"' if eager else 'loading="lazy"'
+    return (f'<img class="{cls}" src="assets/img/{name}.webp" srcset="assets/img/{name}-sm.webp 1200w, assets/img/{name}.webp {IMG_W[name]}w" '
+            f'sizes="{sizes}" alt="{e(alt)}" {load} decoding="async"{style}>')
 
 def bulb():
     return '''<div class="bulb" aria-hidden="true"><div class="bulb-sway"><svg viewBox="0 0 240 560">
@@ -54,12 +57,12 @@ h1 = "<br>".join(e(l).replace(e(H["h1_highlight"]), f'<em class="hl">{e(H["h1_hi
 trust = "".join(f'<li>{line_icon(t["icon"])}<span>{e(t["label"])}</span></li>' for t in C["trust"])
 svc = "".join(f'<li class="svc"><span class="svc-ico">{line_icon(s["icon"])}</span><span class="svc-name">{e(s["name"])}</span></li>' for s in C["services"])
 chips = "".join(f'<li>{line_icon("check")}{e(c)}</li>' for c in EM["chips"])
-projects = "".join(f'<figure class="proj">{pic(p["img"], p["caption"] + " (sample image)", pos=p["pos"])}<figcaption><span>{e(p["caption"])}</span><b>Sample</b></figcaption></figure>' for p in C["projects"])
+projects = "".join(f'<figure class="proj">{pic(p["img"], p["caption"] + " (sample image)", pos=p["pos"], sizes="(max-width:640px) 50vw, 460px")}<figcaption><span>{e(p["caption"])}</span><b>Sample</b></figcaption></figure>' for p in C["projects"])
 steps = "".join(f'<li class="step"><div class="step-top"><span class="num">0{i+1}</span>{line_icon(s["icon"])}</div><h3>{e(s["title"])}</h3><p>{e(s["text"])}</p></li>' for i, s in enumerate(C["steps"]))
 reviews = "".join(f'<figure class="review"><span class="tag">Sample</span><span class="qmark" aria-hidden="true">“</span><blockquote>{e(r["quote"])}</blockquote><figcaption>{e(r["name"])} · {e(r["town"])}</figcaption></figure>' for r in C["reviews"])
 towns = "".join(f'<li{" class=\"home\"" if t == C["home_town"] else ""}>{line_icon("check")}{e(t)}</li>' for t in C["towns"])
-opts_town = "".join(f"<option>{e(t)}</option>" for t in C["towns"]) + "<option>Other town</option>"
-opts_svc = "".join(f"<option>{e(s['name'])}</option>" for s in C["services"]) + "<option>Something else</option>"
+opts_town = '<option value="" disabled selected>Choose a town</option>' + "".join(f"<option>{e(t)}</option>" for t in C["towns"]) + "<option>Other town</option>"
+opts_svc = '<option value="" disabled selected>Choose a service</option>' + "".join(f"<option>{e(s['name'])}</option>" for s in C["services"]) + "<option>Something else</option>"
 logo = f'<a class="logo" href="#top" aria-label="{e(name)} demo home"><span class="logo-mark">{line_icon("zap")}</span><span class="logo-txt"><b>Brightwire</b><small>{e(C["tagline"])}</small></span></a>'
 
 page = f'''<!doctype html>
@@ -100,14 +103,14 @@ page = f'''<!doctype html>
   <p class="side-word" aria-hidden="true">Brightwire · Demo</p>
 </section>
 
-<section class="quote-sec"><div class="wrap">
+<section class="quote-sec" id="quote"><div class="wrap">
   <form class="quote" id="quote-form">
-    <div class="quote-head" id="quote"><h2>Quick quote</h2><span class="sample">Demo form</span></div>
+    <div class="quote-head"><h2>Quick quote</h2><span class="sample">Demo form</span></div>
     <div class="fields">
-      <label>Name<input name="name" autocomplete="off" placeholder="Your name" required></label>
-      <label>Phone<input name="phone" type="tel" autocomplete="off" placeholder="(732) 555-0100" required></label>
-      <label>Town<select name="town">{opts_town}</select></label>
-      <label>Need<select name="need">{opts_svc}</select></label>
+      <label>Name<input name="name" autocomplete="name" placeholder="Your name" required></label>
+      <label>Phone<input name="phone" type="tel" autocomplete="tel" placeholder="(732) 555-0100" required></label>
+      <label>Town<select name="town" required>{opts_town}</select></label>
+      <label>Need<select name="need" required>{opts_svc}</select></label>
       <button class="btn btn-primary" type="submit"><span>Request a quote</span>{line_icon("arrow-right")}</button>
     </div>
     <p class="micro">Demo form. Nothing is sent.</p>
